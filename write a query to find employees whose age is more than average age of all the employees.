@@ -1,0 +1,3 @@
+select e.*
+from employee e
+where e.emp_age > (select AVG(emp_age) as avg_age_of_all_emp from employee)
