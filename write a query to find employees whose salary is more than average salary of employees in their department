@@ -2,7 +2,7 @@ with A as (select dept_id,avg(salary) as avg_salary_per_department
 from employee
 group by dept_id)
 
-select e.emp_id,e.emp_name
+select e.*
 from employee e
 inner join A 
 on e.dept_id=A.dept_id
