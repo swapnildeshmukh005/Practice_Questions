@@ -1,0 +1,17 @@
+with category_wise_sales as (
+SELECT category,product_id,sum(sales) as category_sales 
+from orders
+group by category,product_id),
+rank_sales as (
+SELECT *,rank() over (partition by category order by category_sales desc) as rn
+from category_wise_sales)
+
+SELECT * 
+from rank_sales
+where rn <= 5
+
+
+
+
+--- here we have used 2 CTE 
+--- important question
