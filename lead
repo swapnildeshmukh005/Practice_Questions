@@ -1,0 +1,5 @@
+select * from employee;
+
+select *,
+lead(salary,1) over (partition by dept_id order by salary desc) as lead_sal
+from employee;
