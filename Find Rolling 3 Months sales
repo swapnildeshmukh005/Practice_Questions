@@ -1,0 +1,16 @@
+use namstesql;
+select * from orders;
+
+
+with month_wise_sales as (
+select DATEPART(YEAR,order_date) as year_order,
+		DATEPART(Month,order_date) as month_order,
+		sum(sales) as total_sales
+from orders
+group by DATEPART(YEAR,order_date),DATEPART(Month,order_date))
+
+select year_order,month_order,total_sales,
+sum(total_sales) over (order by year_order,month_order 
+						rows between 2 preceding 
+						and current row) as rolling_3_months_sales
+from month_wise_sales
