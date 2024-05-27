@@ -1,0 +1,11 @@
+select *,
+sum(salary) over (partition by dept_id 
+                  order by emp_id 
+                  rows between 1 preceding
+                  and 1 following) as rolling_3_salary
+from employee;
+
+
+rows between unbounded preceding and current row
+
+rows between unbounded preceding and unbounded following
