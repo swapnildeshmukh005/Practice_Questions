@@ -1,3 +1,4 @@
+--- using cte  ---
 with highest_salary_person as (select dept_id,max(salary) as highest_salary
 from employee
 group by dept_id)
