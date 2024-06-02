@@ -1,0 +1,26 @@
+select * from orders
+
+select category,
+sum(case when DATEPART(YEAR,order_date)=2020 then sales else 0 end)as sales_2020,
+sum(case when DATEPART(YEAR,order_date)=2021 then sales else 0 end)as sales_2021
+from orders
+group by category;
+
+
+*******************  OR  *********************
+
+select * from
+(select category,datepart(year,order_date)as yod, 
+sales from orders)t1
+pivot  (
+sum(sales) for yod in ([2020],[2021])
+)t2
+
+***************************************************
+
+select * from 
+(select category,region,sales
+from orders)t1
+pivot(
+sum(sales) for region in (West,East)
+)t2
