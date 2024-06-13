@@ -1,0 +1,10 @@
+1. List the names of all left-handed batsmen from England. Order the results alphabetically. (<player name>) [2 marks]
+2. List the names and age (in years, should be integer) as on 2018-12-02 (12th Feb, 2018) of all bowlers with skill “Legbreak googly” who are 28 or more in age. Order the result in decreasing order of their ages. Resolve ties alphabetically. (<player name, player age>) [2 marks]
+
+
+--1--
+
+SELECT player_name FROM player WHERE batting_hand = 'Left-hand bat' and country_name = 'England' ORDER BY player_name;
+--2--
+SELECT player_name, age AS player_age FROM (SELECT player_id, player_name, DATE_PART('year', age('2018-02-12'::date,dob)) AS age FROM player WHERE bowling_skill='Legbreak googly') AS derived4 WHERE derived4.age >= 28 ORDER BY derived4.age DESC, player_name ASC;
+
