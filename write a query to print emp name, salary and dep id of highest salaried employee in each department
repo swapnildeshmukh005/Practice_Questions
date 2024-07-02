@@ -6,7 +6,6 @@ from employee
 group by dept_id)
 
 
-
 select e.emp_name,e.salary,e.dept_id
 from employee e
 inner join highest_salary_person h
