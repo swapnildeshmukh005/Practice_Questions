@@ -1,4 +1,5 @@
 
+
 1. List the names of all left-handed batsmen from England. Order the results alphabetically. (<player name>) [2 marks]
 
 SELECT player_name FROM player WHERE batting_hand = 'Left-hand bat' and country_name = 'England' ORDER BY player_name;
