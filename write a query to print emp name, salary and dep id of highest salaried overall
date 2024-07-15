@@ -1,4 +1,3 @@
-
 SELECT * 
 FROM employee 
 WHERE salary = (select max(salary) from employee)
