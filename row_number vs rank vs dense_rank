@@ -1,5 +1,6 @@
 select * from employee;
 
+
 select *,
 row_number() over (partition by dept_id order by salary desc) as rn,
 rank() over (partition by dept_id order by salary desc) as rnk,
